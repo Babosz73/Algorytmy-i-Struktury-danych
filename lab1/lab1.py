@@ -52,3 +52,30 @@ class Matrix:
                 s += f" {j}"
             s += " |\n"
         return s
+    
+def transpos(m):
+    row, cols = m.size()
+    new = Matrix((cols, row))
+    for i in range(row):
+        for j in range(cols):
+            new[j][i] = m[i][j]
+    return new
+
+if __name__ == "__main__": #nie wiedziałem jak wywoływać maina i znalazłem ten sposób w internecie lecz nie jestem pewien czy jest on poprawny
+    m1 = Matrix([
+        [1, 0, 2],
+        [-1, 3, 1]])
+
+    print(transpos(m1))
+
+    m2 = Matrix((2, 3), a = 1)
+    print(m1 + m2)
+
+    m3 = Matrix([
+        [3, 1],
+        [2, 1],
+        [1, 0]
+    ])
+    print(m1 * m3)
+    
+    
