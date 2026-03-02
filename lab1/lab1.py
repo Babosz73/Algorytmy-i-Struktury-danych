@@ -12,7 +12,7 @@ class Matrix:
         if self.size() != other.size():
             return None
 
-        result = matrix(self.size())
+        result = Matrix(self.size())
         
         for i in range(self.size()[0]):
             for j in range(self.size()[1]):
@@ -20,10 +20,10 @@ class Matrix:
         return result
     
     def __mul__(self, other):
-        if self.size()[0] != other.size()[1]:
+        if self.size()[1] != other.size()[0]:
             return None
         
-        result = matrix((self.size()[0], other.size()[1]))
+        result = Matrix((self.size()[0], other.size()[1]))
 
         for i in range(self.size()[0]):
             for j in range(other.size()[1]):
@@ -41,12 +41,14 @@ class Matrix:
                     return False
         return True
 
-    def __getitem__(self, row, col):
-        return self.__matrix[row][col]
+    def __getitem__(self, row):
+        return self.__matrix[row]
     
     def __str__(self):
+        s = ""
         for i in self.__matrix:
-            print("|")
-            for j in self.__matrix[0]:
-                print(j)
-            print("|\n")
+            s += "|"
+            for j in i:
+                s += f" {j}"
+            s += " |\n"
+        return s
