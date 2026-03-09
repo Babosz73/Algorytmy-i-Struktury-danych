@@ -113,36 +113,36 @@ if __name__ == "__main__":
     print(uczelnie.print_list())
 
    
-    print("Długość listy:", uczelnie.length())
+    print("Długość listy", uczelnie.length())
 
     
-    # print("Usunięty pierwszy element:", uczelnie.remove())
+    print("Usunięty pierwszy element", uczelnie.remove())
 
     
-    # print("Pierwszy element po usunięciu:", uczelnie.get())
+    print("Pierwszy element po usunięciu", uczelnie.get())
 
    
-    # print("Usunięty ostatni element:", uczelnie.remove_end())
+    print("Usunięty ostatni element", uczelnie.remove_end())
 
     
-    # print("Lista po usunięciu pierwszego i ostatniego elementu:")
-    # print(uczelnie.print_list())
+    print("Lista po usunięciu pierwszego i ostatniego elementu")
+    print(uczelnie.print_list())
 
    
-    # uczelnie.destroy()
-    # print("Czy lista jest pusta po destroy?:", uczelnie.is_empty())
+    uczelnie.destroy()
+    print("Czy lista jest pusta po destroy dla isempty", uczelnie.is_empty())
 
    
-    # print("Usuwanie pierwszego elementu z pustej listy:", uczelnie.remove())
+    print("Usuwanie pierwszego elementu z pustej listy", uczelnie.remove())
 
     
-    # print("Usuwanie ostatniego elementu z pustej listy:", uczelnie.remove_end())
+    print("Usuwanie ostatniego elementu z pustej listy", uczelnie.remove_end())
 
     
-    # uczelnie.append(('AGH', 'Kraków', 1919))
+    uczelnie.append(('AGH', 'Kraków', 1919))
 
     
-    # print("Usunięty ostatni element:", uczelnie.remove_end())
+    print("Usunięty ostatni element po dodaniu aghkrakow1919", uczelnie.remove_end())
 
     
-    # print("Czy lista jest pusta na końcu?:", uczelnie.is_empty())
+    print("Wypisywanie wyniku isepmty", uczelnie.is_empty())
