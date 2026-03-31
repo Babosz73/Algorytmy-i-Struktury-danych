@@ -134,7 +134,7 @@ def main():
     tree.print_tree()
     tree.print_as_list()
     wartosc =tree.search(24)
-    print(f"Wartość dla klucza 24: {wartosc}")
+    print(f"Wartosc dla klucza 24: {wartosc}")
     tree.insert(20, "AA")
     tree.insert(6, "M")
     tree.delete(62)
@@ -146,7 +146,7 @@ def main():
     tree.delete(50)
     tree.delete(5)
     tree.delete(24)
-    print("Wysokość drzewa:", tree.height())
+    print("Wysokosc drzewa:", tree.height())
     tree.print_as_list()
     tree.print_tree()
 
