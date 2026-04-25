@@ -20,9 +20,50 @@ class AVL:
                 current = current.right
         return None
     
-    #napisz def insert
+    def insert(self, key, value):
+        self.root = self.insert2(self.root, key, value)
+    
+    def insert2(self, node, key, value):
+        if node is None:
+            return Node(key, value)
+        if key < node.key:
+            node.left = self.insert2(node.left, key, value)
+        elif key > node.key:
+            node.right = self.insert2(node.right, key, value)
+        else:
+            node.value = value
+            return node
+        return self.rebalance(node)
+    
+    def delete(self, key):
+        self.root = self.delete2(self.root, key)
         
-    #napisz def delete
+    def delete2(self, node, key):
+        if node is None:
+            return None
+        if key < node.key:
+            node.left = self.delete2(node.left, key)
+        elif key > node.key:
+            node.right = self.delete2(node.right, key)
+        else:
+            if node.left is None:
+                return node.right
+            elif node.right is None:
+                return node.left
+            else:
+                minimal_prawe = self.find_min_right_delete(node.right)
+                node.key = minimal_prawe.key
+                node.value = minimal_prawe.value
+                node.right = self.delete2(node.right, minimal_prawe.key)
+        return self.rebalance(node)
+    
+
+
+    def find_min_right_delete(self, node):
+        current = node
+        while current.left is not None:
+            current = current.left
+        return current    
         
             
     def print_as_list(self):
@@ -33,7 +74,7 @@ class AVL:
                 return
             
             traverse(node.left)
-            result.append(f"{node.key} {node.value}")
+            result.append(f"{node.key}:{node.value}")
             traverse(node.right)
 
         traverse(self.root)
@@ -118,3 +159,39 @@ class AVL:
         return node
             
 
+def main():
+    tree = AVL()
+
+    elementy = [
+        (50,'A'), (15,'B'), (62,'C'), (5,'D'), (2,'E'), (1,'F'), (11,'G'), (100,'H'), (7,'I'), (6,'J'), (55,'K'), 
+        (52,'L'),(51,'M'), (57,'N'), (8,'O'), (9,'P'), (10,'R'), (99,'S'), (12,'T')]
+
+    for kl, va in elementy:
+        tree.insert(kl, va)
+
+    tree.print_tree()
+    tree.print_as_list()
+
+    print(tree.search(10))
+
+    tree.delete(50)
+    tree.delete(52)
+    tree.delete(11)
+    tree.delete(57)
+    tree.delete(1)
+    tree.delete(12)
+
+    tree.insert(3, 'AA')
+    tree.insert(4, 'BB')
+
+    tree.delete(7)
+    tree.delete(8)
+
+    tree.print_tree()
+    tree.print_as_list()
+
+if __name__ == "__main__":
+    main()
+
+# W poleceniu pojawia się sformułowanie „wyświetl drzewo BST”, jednak z kontekstu zadania zrozumialem, że należy zaimplementować i testować drzewo AVL. 
+# Dlatego wszystkie operacje takie jak insert, delete,  czy wyświetlanie zostały wykonane  na drzewie AVL, przynajmniej tak mi sie wydaje ze to jest barzdziej logiczne.
